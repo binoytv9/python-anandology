@@ -46,9 +46,3 @@ def swap_set(word):
 		else:
 			s_set.add(word[-1] + word[1:-1] + word[:1])
 	return s_set
-
-
-if __name__ == '__main__':
-	w=raw_input("\n\nEnter the string : ")
-	chk=raw_input("\n\nEnter the string to be checked: ")
-	print "\n\n%s in %s : %s\n" %(chk,w,chk in mutate(w))
