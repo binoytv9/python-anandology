@@ -23,17 +23,19 @@ class Rectangle(Shape):
         self.w = w
         self.h = h
 
-    def hline(self, x, y, w):
-        pass
+    def hline(self, canvas, x, y, w):
+	for i in range(w+1):
+		canvas.setpixel(x,y+i)
 
-    def vline(self, x, y, h):
-        pass
+    def vline(self, canvas, x, y, h):
+	for i in range(h+1):
+		canvas.setpixel(x+i,y)
 
     def paint(self, canvas):
-        hline(self.x, self.y, self.w)
-        hline(self.x, self.y + self.h, self.w)
-        vline(self.x, self.y, self.h)
-        vline(self.x + self.w, self.y, self.h)
+        self.hline(canvas,self.x, self.y, self.w)
+        self.hline(canvas,self.x + self.h, self.y, self.w)
+        self.vline(canvas,self.x, self.y, self.h)
+        self.vline(canvas,self.x, self.y + self.w, self.h)
 
 class Square(Rectangle):
     def __init__(self, x, y, size):
@@ -48,3 +50,9 @@ class CompoundShape(Shape):
             s.paint(canvas)
 
 
+if __name__ == '__main__':
+	c=Canvas(50,50)
+	c.display()
+	r=Rectangle(1,10,10,4)
+	r.paint(c)
+	c.display()
